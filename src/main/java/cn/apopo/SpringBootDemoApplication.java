@@ -2,10 +2,12 @@ package cn.apopo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 // 应用程序的启动引导类,主要的Spring配置类
 // @EnableAutoConfiguration // Spring Boot根据添加的jar依赖猜测如何配置
 @SpringBootApplication // 开启Spring的组件扫描和Spring Boot的自动配置功能（@Configuration + @ComponentScan + @EnableAutoConfiguration）
+@EnableEurekaClient
 public class SpringBootDemoApplication {
 
     // main放置在root package
