@@ -1,6 +1,7 @@
 package cn.apopo.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +16,11 @@ import cn.apopo.properties.HelloProperties;
 @RequestMapping("/") // MVC中的注解,路由信息
 public class SpringBootDemoController {
 
-//    @Autowired
-//    private HelloProperties helloProperties;
+    @Autowired
+    private HelloProperties helloProperties;
+
+    @Value("${cloud.config}")
+    private String cloud;
 
     public String helloWorld() {
         return "HelloWorld";
@@ -24,8 +28,13 @@ public class SpringBootDemoController {
 
     @RequestMapping("/home")
     public String home() {
-        // return helloProperties.getAssociateId();
-        return "HelloWorld";
+        return helloProperties.getAssociateId();
+        // return "HelloWorld";
+    }
+
+    @RequestMapping("cloud")
+    public String cloud() {
+        return cloud;
     }
 
 }
